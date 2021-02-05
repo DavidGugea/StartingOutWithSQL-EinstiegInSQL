@@ -1,6 +1,6 @@
 #### The first SQL Book / Starting out in SQL
 
-***Table of contents: ***
+***Table of contents:***
 1. Grundlagen kennenlernen und verstehen / Understanding the basics
 2. Los geht's: Die Grundfunktionen der Tabellenabfrage (SELECT ) / The basic functions of table queries ( SELECT ) 
 3. Zeilen einfügen ( INSERT ), ändern ( UPDATE ) und löschen ( DELETE, TRUNCATE ) / Inserting rows ( INSERT ), updating ( UPDATE ) and delete ( DELETE,  TRUNCATE ) 
