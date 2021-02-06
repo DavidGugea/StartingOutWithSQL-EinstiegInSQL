@@ -1,4 +1,4 @@
-#### The first SQL Book / Starting out in SQL
+#### The first SQL Book / Starting out with SQL
 
 ***Table of contents:***
 1. Grundlagen kennenlernen und verstehen / Understanding the basics
@@ -21,3 +21,39 @@
 18. Mächtiges Werkzeug : Die Unterabfragen ( Sub queries ) / Sub queries 
 19. Views: Abfragen in virtuellen Tabellen speichern / Saving queries in virtual tables
 20. Performance von Abfragen optimieren ( Index ) / Optimizing queries performance
+
+---
+
+### 1. Grundlagen kennenlernen und verstehen / Understanding the basics
+
+A database that uses tables to store data is called a relational database.
+There are more types of relational databases, here are some examples : 
+* IBM DB2
+* Oracle DB
+* Microsoft SQL Server
+* Oracle MySQL
+* MariaDB
+* PostgreSQL
+
+**SQL is a standard from the ISO** ( International Organization for Standardization ). Every Database has slight differences from the standard SQL language which are called **SQL dialects**.
+
+In SQL there are two types of comments:
+* One line comment using two dashes : --
+* Multi line comment, like in CSS for example : /* */
+
+You can write queries in different methods. You either write them in one line which makes things a little harder to read if it's a long query, or you structure it on multiple lines. Example :
+
+```SQL  
+SELECT
+    name, middle_name, bonus
+FROM
+    workers
+WHERE 
+    bonus > 500;
+```
+ 
+Or :
+
+```SQL
+SELECT name, middle_name, bonus FROM workers WHERE bonus > 500;
+```
