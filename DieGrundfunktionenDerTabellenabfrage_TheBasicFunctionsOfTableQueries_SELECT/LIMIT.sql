@@ -1,0 +1,1 @@
+SELECT name, vorname FROM mitarbeiter LIMIT 2;
