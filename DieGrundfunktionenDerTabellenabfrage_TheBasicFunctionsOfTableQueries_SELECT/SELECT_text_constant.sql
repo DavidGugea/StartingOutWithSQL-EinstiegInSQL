@@ -1,0 +1,1 @@
+SELECT "Herzlichen Glückwunsch zum Geburtstag";
