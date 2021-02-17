@@ -57,3 +57,105 @@ Or :
 ```SQL
 SELECT name, middle_name, bonus FROM workers WHERE bonus > 500;
 ```
+
+### 2. Los geht's: Die Grundfunktionen der Tabellenabfrage (SELECT ) / The basic functions of table queries ( SELECT ) 
+
+The most basic selection that you can do is the **SELECT [columns-name] FROM [table-name]**.
+Example:
+
+```SQL
+SELECT
+    name,
+    age
+FROM
+    workers;
+```
+
+If you want to select all the columns, use the asterix sign *\**:
+
+```SQL
+SELECT * FROM workers;
+```
+
+You usually don't want to select everything and you want to filter you data based on certain requirments. In order do filter data you have to use **WHERE**.
+
+Here's a table of filters that you can use with ***WHERE***:
+
+| Operator | Function |
+| -------- | -------- |
+| value1 = value2 | Equal to == in programming languages, it proves if two values are equal or not |
+| value1 <> value2 OR value1 != value2 | Proves if value1 is not equal to value2 |
+| value1 < value2 | Returns if value1 is smaller than value2 | 
+| value1 <= value2 | Returns if value1 is smaller or equal than value2 |
+| value1 > value2 | Returns if value1 is bigger than value2 |
+| value1 >= value2 | Returns if value1 is bigger or equal than value2 |
+| value **BETWEEN** value1 **AND** value2 | Proves if value is between value1 & value2 |
+| value **NOT BETWEEN** value1 **AND** value2 | Proves if value is not between value1 & value2 |
+| value **LIKE** pattern | Proves if value looks like the given pattern |
+| value **NOT LIKE** pattern | Proves if value doesn't look like the given pattern |
+| value **IN** (value1, value2, ...) | Proves if the value is in the given list |
+| value **NOT IN** (value1, value2, ...) | Provesi if the value is not in the given list |
+| value **IS NULL** | Proves if the given value is null|
+| value **IS NOT NULL** | Proves if the given value is not null |
+
+Here are some examples:
+
+```SQL
+SELECT
+    name,
+    age
+FROM
+    workers
+WHERE
+    name = "Johnson"
+
+-- Selects all the name&age columns from the table workers where the name is equal to "Johnson"
+```
+
+```SQL
+SELECT
+    name,
+    age
+FROM
+    workers
+WHERE age BETWEEN 18 AND 30
+
+-- Selects all the name&age columns from the table workers where the age is between 18 & 30
+```
+
+```SQL
+SELECT
+    name,
+    age
+FROM
+    workers
+WHERE age IN (18, 19);
+
+-- Selects all the name&age columns from the table workers where the age is in the list of values that contains the numbers 18 & 19
+```
+
+The **LIKE** operator is a little different and harder to use. You can think about REGEX when it comes to the **LIKE** operator. It doesn't use the same patterns but it is very familiar.
+
+| Regex | SQL LIKE OPERATOR |
+| ----- | ----------------- |
+| .* | % |
+| . | _ |
+
+An important thing to know is that for SQL "A%" and "a%" are the same thing but if you use something else like PostgreSQL they are not the same anymore.
+
+Example:
+
+```SQL
+WHERE column1 LIKE 'a%'
+
+-- column1 has to start with a, and after a you can have any amount of any characters like, it doesn't matter ( e. g. asdf123, aaaa, it just has to start with an 'a' )
+```
+
+```SQL
+WHERE column1 LIKE 'fac_book'
+
+-- column1 can have any character in the place where you have '_', it can be anything, but only one sing e character is allowed not more.
+```
+
+The **NULL** value means that the value in a certain column is not defined yet or it can't be read. **NULL** doesn't mean 0, it simply doesn't mean anything, the value is nothing. Even if you have an empty string like **""**, that is **not NULL**. The **NULL** value can be seen as a placeholder for a value that has not been given yet.
+**NULL** also influences filter operations. If you try to filter a value that is NULL you won't get neither true nor false, you will get **NULL** as a result, which makes **NULL the third logical value**.
