@@ -157,5 +157,84 @@ WHERE column1 LIKE 'fac_book'
 -- column1 can have any character in the place where you have '_', it can be anything, but only one sing e character is allowed not more.
 ```
 
-The **NULL** value means that the value in a certain column is not defined yet or it can't be read. **NULL** doesn't mean 0, it simply doesn't mean anything, the value is nothing. Even if you have an empty string like **""**, that is **not NULL**. The **NULL** value can be seen as a placeholder for a value that has not been given yet.
-**NULL** also influences filter operations. If you try to filter a value that is NULL you won't get neither true nor false, you will get **NULL** as a result, which makes **NULL the third logical value**.
+The **NULL** value means that the value in a certain column is not defined yet or it can't be read. **NULL** doesn't mean 0, it simply doesn't mean anything, the value is nothing. Even if you have an empty string like **""**, that is **not NULL**. ***The NULL value can be seen as a placeholder for a value that has not been given yet.***
+**NULL** also influences filter operations. If you try to filter a value that is NULL you won't get neither true nor false, you will get **NULL** as a result, which makes **NULL the third logical value**. For example, true & true is true, false & false is false but whatever you mix up with **NULL** will be **NULL**.
+
+Now that we have learned how to filter the selected values we can also learn how to limit the output amount. We can easliy do that by using the keywrod **LIMIT**.
+
+```SQL
+SELECT name, age FROM workers LIMIT 2;
+```
+
+Now SQL will only take 2 columns not all of them.
+The **LIMIT** keyword isn't the same in all DB systems :
+
+| DB System | Limit function |
+| --------- | -------------- |
+| MySQL | LIMIT > SELECT name, age FROM workers LIMIT 2|
+| Microsoft SQL Server | TOP > SELECT TOP 2 name, age FROM workers |
+| PostgreSQL | FETCH > SELECT name, age FROM workers FECTH FIRST 2 ROWS ONLY |
+
+Now that we know how to limit the amount of output we can also order our output using the **ORDER BY** keyword. This keyword is pretty straight forward, there's not a lot to explain to it. Here is an example:
+
+```SQL
+SELECT 
+    name,
+    age
+FROM
+    workers
+ORDER BY 
+    name,
+    age;
+
+-- First order by name, if two names are the same then order by age.
+```
+
+You can also mix it with **WHERE**:
+
+```SQL
+SELECT
+    name,
+    age
+FROM
+    workers
+WHERE
+    salary > 3000
+ORDER BY 
+    name,
+    age;
+```
+
+Working with constants is also an important thing to know. You can mix up constants with columns from the table when selecting or filtering values. Here is an example:
+
+```SQL
+SELECT
+    name,
+    " is ",
+    age,
+    " years old."
+FROM 
+    workers;
+```
+
+The columns where you put the constants will be named exactly like the constant. 
+Let's say that you select the column "name" and you want the name of the column to be more specific, something like "First_name_of_the_worker", you can change the name of the column by using the keyword **AS**. Example:
+
+```SQL
+SELECT
+    name AS worker_first_name,
+    age AS worker_age,
+    salary AS worker_salary
+FROM
+    worker
+WHERE
+    salary >= 100000;
+```
+
+In case you want to choose only unique rows that never repeat each other you must use the **DISTINCT** keyword:
+
+```SQL
+SELECT DISTINCT name FROM workers;
+```
+
+Now, no names will be repeated in the made selection.
