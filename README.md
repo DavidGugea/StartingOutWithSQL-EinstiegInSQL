@@ -205,6 +205,17 @@ ORDER BY
     age;
 ```
 
+By default you order in ascending order, so there's no need to write the keyword *ASC* but if you want to order in descending order you will have to use the keyword *DESC*:
+
+```SQL
+SELECT
+    name,
+    age
+FROM
+    workers
+ORDER BY age DESC;
+```
+
 Working with constants is also an important thing to know. You can mix up constants with columns from the table when selecting or filtering values. Here is an example:
 
 ```SQL
