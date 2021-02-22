@@ -173,7 +173,7 @@ The **LIMIT** keyword isn't the same in all DB systems :
 | --------- | -------------- |
 | MySQL | LIMIT > SELECT name, age FROM workers LIMIT 2|
 | Microsoft SQL Server | TOP > SELECT TOP 2 name, age FROM workers |
-| PostgreSQL | FETCH > SELECT name, age FROM workers FECTH FIRST 2 ROWS ONLY |
+| PostgreSQL | FETCH > SELECT name, age FROM workers FETCH FIRST 2 ROWS ONLY |
 
 Now that we know how to limit the amount of output we can also order our output using the **ORDER BY** keyword. This keyword is pretty straight forward, there's not a lot to explain to it. Here is an example:
 
